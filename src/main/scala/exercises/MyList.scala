@@ -21,7 +21,7 @@ abstract class MyList[+A] {
   def filter(predicate: MyPredicate[A]): MyList[A]
 }
 
-object Empty extends MyList[Nothing] {
+case object Empty extends MyList[Nothing] {
   def head: Nothing = throw new NoSuchElementException
   def tail: MyList[Nothing] = throw new NoSuchElementException
   def isEmpty: Boolean = true
@@ -33,7 +33,7 @@ object Empty extends MyList[Nothing] {
   def filter(predicate: MyPredicate[Nothing]): MyList[Nothing] = Empty
 }
 
-class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
+case class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
   def head: A = h
   def tail: MyList[A] = t
   def isEmpty: Boolean = false
