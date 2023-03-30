@@ -1,7 +1,5 @@
 package exercises
 
-import lectures.part2oop.Generics.MyList
-
 abstract class MyList[+A] {
   def head: A
   def tail: MyList[A]
@@ -91,4 +89,11 @@ object ListTest extends App {
   println(listOfIntegers.zipWith[String, String](listOfStrings, _ + "-" + _))
 
   println(listOfIntegers.fold(0)((a: Int, b:Int) => a + b))
+
+  val forComprehensionTest = for {
+    integer <- listOfIntegers
+    str <- listOfStrings
+  } yield s"$integer - $str"
+
+  println(forComprehensionTest)
 }
